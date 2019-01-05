@@ -1,0 +1,19 @@
+{% extends 'testimony/base1.html' %}
+
+{% block content %}
+
+
+   <a href="{% url 'testimony:profile' %}"><p> click here to go to testimonys profiles</p></a>
+   {% for field in all_profiles %}
+     <div class="container">
+
+       <p><span>commenting person:{{ field.name }}.-----></span>Towhom commented{{ field.to_name }}.</p>
+       <p>comments:{{ field.commented }}</p>
+     </div>
+   {% endfor %}
+
+
+
+
+
+{% endblock %}

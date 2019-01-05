@@ -1,0 +1,11 @@
+{% if user.is_authenticated %}
+<form action="{% url 'startFundraiser:like_camp' %}" method="post">
+  {% csrf_token %}
+  {% if is_liked %}
+     <button type="submit" class="button button2" id="like" name="camp_id" value="{{ campaign1.id }}">Dislike</button>
+  {% else %}
+     <button type="submit" class="button button2" id="like" name="camp_id" value="{{ campaign1.id }}">Like</button>
+  {% endif %}
+</form>
+{% endif %}
+{{ total_likes }} Likes

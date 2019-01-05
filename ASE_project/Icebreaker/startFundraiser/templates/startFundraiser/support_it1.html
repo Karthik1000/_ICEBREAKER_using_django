@@ -1,0 +1,13 @@
+{% extends 'startFundraiser/home.html' %}
+
+{% block content %}
+<br><br><br><br><br><br><br>
+    <h1>New donation</h1>
+    <form method="POST"  action="{% url 'startFundraiser:checkout' pk %}" class="post-form">{% csrf_token %}
+      Backer: <input type="text" name="backer" value="{{ request.user }}" >
+      amount: <input type="number" name="pay" >
+        <button type="submit" class="save btn btn-default">Add</button>
+    </form>
+
+
+{% endblock %}

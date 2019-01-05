@@ -1,0 +1,17 @@
+{% extends 'startFundraiser/home.html' %}
+{% load static %}
+{% block title %}404{% endblock %}
+{% block bg_img %}
+<section class="sec1">
+    <img src="{% static 'startFundraiser/images/bg_2.jpg' %}">
+</section>
+{% endblock %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container">
+    <h1>No such page</h1>
+    <br><br>
+    <img src='{% static "img/community/404.jpg" %}'>
+</div>
+{% endblock %}

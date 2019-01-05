@@ -1,0 +1,29 @@
+{% extends 'startFundraiser/base.html' %}
+{% block title %}Campaigns|iceBreaker{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <nav id="sidebar">
+        <div class="sidebar-header">Filter</div>
+
+    <p>Project Type</p>
+        <ul type="None">
+            <li><a href="{% url 'startFundraiser:campaigns' %}">All Campaigns</a></li>
+            <li><a href="{% url 'startFundraiser:campaigns' %}">Marketplace</a></li>
+            <li><a href="{% url 'startFundraiser:campaigns' %}">Communities</a></li>
+        </ul>
+
+    <p>Collections</p>
+        <ul type="None">
+            <li><a href="{% url 'startFundraiser:creative' %}">Creative</a></li>
+            <li><a href="{% url 'startFundraiser:social' %}">Social</a></li>
+            <li><a href="{% url 'startFundraiser:tech' %}">Tech &amp; Innovation</a></li>
+        </ul>
+
+
+    </nav>
+</div>
+{% endblock %}
+
+{% block body %}
+{% endblock %}

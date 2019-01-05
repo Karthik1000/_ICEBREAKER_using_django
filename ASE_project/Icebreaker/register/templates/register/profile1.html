@@ -1,0 +1,23 @@
+
+{% extends "startFundraiser/home.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container center">
+      {% if user.is_authenticated %}
+        {% if request.user.profile.photo %}
+          <img src="{{ request.user.profile.photo.url }}" alt="" class="navbar-img" width="300px" height="350px">
+        {% else %}
+          <img src="{% static 'register/images/user.png' %}" alt="" class="navbar-img" width="300px" height="350px">
+        {% endif %}
+      {% endif%}
+
+        <form method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" value="Save changes" class="btn btn-outline-success">
+        </form>
+    </div>
+
+
+{% endblock %}

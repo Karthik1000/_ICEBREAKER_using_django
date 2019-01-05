@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" >
+<a class="navbar-brand" href="#" style="color:#F933FF;"><b>CrowdFunding</b></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'project:home' %}"  onMouseOver="this.style.color='#F933FF'"   onMouseOut="this.style.color='black'"><b>Home </b><span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" onMouseOver="this.style.color='#F933FF'"   onMouseOut="this.style.color='black'"><b>Explore </b><span class="sr-only">(current)</span></a>
+  </li>
+
+  <form class="form-inline my-2 my-lg-0" action="{% url 'project:post_list' %}">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+
+
+</ul>
+<ul class="navbar-nav">
+  <a href="#" class="nav-link" onMouseOver="this.style.color='#F933FF'"   onMouseOut="this.style.color='black'"><b>Start Campaign</b> <span class="sr-only">(current)</span></a>
+</ul>
+<ul class="navbar-nav">
+  {% if request.user.is_authenticated %}
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {% if request.user.profile.photo %}
+        <img src="{{ request.user.profile.photo.url }}" alt="" class="navbar-img" width="30px" height="35px">
+      {% else %}
+        <img src="{% static 'project/images/user.png' %}" alt="" class="navbar-img" width="30px" height="35px">
+      {% endif %}
+      <span> Hi {{ request.user|capfirst }} </span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="{% url 'project:edit_profile' %}" onMouseOver="this.style.color='#F933FF'"   onMouseOut="this.style.color='black'"><b>Profile</b></a>
+      <a class="dropdown-item" href="{% url 'startFundraiser:home' %}" onMouseOver="this.style.color='#F933FF'"   onMouseOut="this.style.color='black'"><b>Campaigns</b></a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="{% url 'project:user_logout' %}" onMouseOver="this.style.color='#F933FF'"   onMouseOut="this.style.color='black'"><b>Logout</b></a>
+    </div>
+  </li>
+  {% else %}
+  <li class="nav-item">
+    <a href="{% url 'project:user_login' %}" class="nav-link" onMouseOver="this.style.color='#F933FF'"   onMouseOut="this.style.color='black'"><b>Login</b> <span class="sr-only">(current)</span></a>
+  </li>
+  {% endif %}
+</ul>
+
+</div>
+</nav>

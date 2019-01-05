@@ -1,0 +1,46 @@
+
+
+{% extends 'startFundraiser/home.html' %}
+{% load static %}
+{% block title %}Start a Campaign{% endblock %}
+{% load widget_tweaks %}
+{% block bg_img %}
+<section class="sec1">
+    <img src="{% static 'startFundraiser/images/bg_2.jpg' %}">
+</section>
+{% endblock %}
+{% block content %}
+<br><br><br><br><br><br>
+<h1 style="width:80%;margin:auto;">Start Your Campaign!</h1>
+<p style="width:80%;margin:auto;">Introduce your campaign providing fundamental details.</p>
+<br><br>
+{% if error_message %}
+{% for key, value in error_message.items %}
+<p style="width:80%;margin:auto;color:darkred"><strong>{{ value }}!</strong></p>
+{% endfor %}
+<br><br>
+{% endif %}
+<form method="post" enctype="multipart/form-data" id="campaign_form" action="#">
+   {% csrf_token %}
+   <div style="width:80%;margin:auto;">
+      {% for field in form %}
+      <div class="form-group">
+         <label for="{{ field.id_for_label }}">{{ field.label }}</label><br>
+         <h6>{{ field.help_text }} </h6>
+         {% render_field field|add_class:'form-control custom-class' placeholder=field.placeholder %}
+         {% for error in field.errors %}
+         <span class="help-block">{{ error }}</span>
+         {% endfor %}
+      </div>
+      <br><br><br>
+      {% endfor %}
+   </div>
+   <hr>
+   <div class="form-group"style="width:80%;margin:auto;">
+      <button type="submit" class="btn-general" style="align-content: center; background-color: #d39e00; font-family: sans-serif">
+      <span class="glyphicon glyphicon-pushpin"></span> Launch Your Campaign!
+      </button><br><br>
+   </div>
+</form>
+{% endblock %}
+

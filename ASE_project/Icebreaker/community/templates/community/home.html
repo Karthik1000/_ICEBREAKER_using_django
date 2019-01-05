@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+    {% if log == 1 %}
+        <h3>you are logged in as {{ user.username }}</h3>
+    {% else %}
+        <h3> you are logged out</h3>
+    {% endif %}
+
+</body>
+</html>

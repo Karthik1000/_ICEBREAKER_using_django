@@ -1,0 +1,234 @@
+
+
+{% load staticfiles %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- meta tags -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <!-- Google fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="{% static 'startFundraiser/style.css' %}">
+      <link rel="shortcut icon" href="{%  static 'startFundraiser/favicon.ico' %}">
+      <title>{% block title %}IceBreaker{% endblock %}</title>
+   </head>
+   <body>
+      <!--Header-->
+      <header>
+         <div class="wrapper">
+            <nav>
+               <div class="logo"><a href="{% url 'startFundraiser:home' %}" class="logo">ice<strong>Breaker</strong></a></div>
+               <ul>
+                  <li><a href="{% url 'community:make_group' %}">Volunteer</a></li>
+                  <li><a class="active" href="{% url 'startFundraiser:campaigns' %}">Explore</a></li>
+                  <li><a class="active" href="{% url 'marketplace:products_blog' %}">Marketplace</a></li>
+                  <li><a class="active" href="{% url 'community:view_group' %}">Communities</a></li>
+                  <li class="nav-item" id="links"><a href="{% url 'startFundraiser:blog_post' %}">notifications</a></li>
+                  <li><a class="active" href="{% url 'polls:query_view' %}">Contact Us</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'register:user_logout' %}">Logout</a></li>
+                  <li><a href="{% url 'register:edit_profile' %}">Howdy {{ request.user }}!</a></li>
+
+                  {% else %}
+                  <li><a href="{% url 'register:user_register' %}">SignUp</a></li>
+                  <li><a href="{% url 'register:user_login' %}">Login</a></li>
+                  {% endif%}
+               </ul>
+               {% block search %}{% endblock %}
+            </nav>
+            {% block bg_img %}{% endblock %}
+         </div>
+      </header>
+      <!-- Header Ends -->
+      {% block content %}
+      <!--Preloader-->
+      <div id="preloader">
+         <div id="status">&nbsp;</div>
+      </div>
+      <!-- Home -->
+      <section id="home">
+         <!-- Background Video -->
+         <video id="home-bg-video" poster="{% static 'startFundraiser/images/bg_1.jpg' %}" autoplay loop muted>
+            <source src="{% static 'startFundraiser/videos/helpig.mp4' %}" type="video/mp4">
+         </video>
+         <!-- Overlay -->
+         <div id="home-overlay"></div>
+         <!-- Overlay -->
+         <div id="home-content" class="text-center">
+            <div id ="home-content-inner">
+               <div id="home-heading">
+                  <h1 id="home-heading-1"><span>Ice<strong>Breaker</strong></span></h1>
+                  <br>
+                  <h1 id="home-heading-2">Make your ideas live!</h1>
+                  <br><br><br>
+               </div>
+               <div id="home-btn">
+                  <a class="btn btn-general btn-home" href="{% url 'startFundraiser:campaigns' %}" title="Explore" role="button">Explore</a>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!--Features-->
+      <section class="counting-sec">
+         <div class="container-box-lg" >
+            <div class="row">
+               <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="single-cool-fact-area text-center mb-100">
+                     <i id="icons" class='fas fa-shopping-cart'></i>
+                     <br><br>
+                     <h2 class="num">564</h2>
+                     <h2>Innovative Products</h2>
+                     <p>Get your hands on the most innovative and clever products.</p>
+                  </div>
+               </div>
+               <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="single-cool-fact-area text-center mb-100">
+                     <i id="icons" class='fas fa-donate'></i>
+                     <br><br>
+                     <h2 class="num">564</h2>
+                     <h2 class="heading">Campaigns</h2>
+                     <p>Support campaigns.</p>
+                  </div>
+               </div>
+               <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="single-cool-fact-area text-center mb-100">
+                     <i id="icons" class='fas fa-hands-helping'></i>
+                     <br><br>
+                     <h2 class="num">896</h2>
+                     <h2 class="heading">Communities</h2>
+                     <p>Form your own community and also volunteer.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Top Fundraiser -->
+      <!-- End Top Fundraisers-->
+      <!---->
+      <section class="funds-sec" id="about">
+         <div class="container-fluid">
+            <div class="row d-flex justify-content-end align-items-center">
+               <div class="col-lg-6 col-md-12 about-left no-padding">
+                  <img class="img-fluid" src="{% static 'startFundraiser/images/bg_1.jpg' %}" alt="">
+               </div>
+               <div class="col-lg-6 col-md-12 about-right">
+                  <h1>Welcome<br>to the communities section</h1>
+                  <p>
+                     Find people with similar interests!
+                  </p>
+                  <button class="button button2 text-uppercase ">Join a community now!<span class="lnr lnr-arrow-right"></span></button>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!---->
+      <!---->
+      <!-- BLOG -->
+      {% if most_liked %}
+      <section class="funds-blog" id="funds-overlay">
+         <!-- container -->
+         <div class="container">
+            <!-- row -->
+            <div class="row">
+               <!-- section title -->
+               <div class="col-md-8 col-md-offset-2">
+                  <div class="section-title text-center">
+                     <h1 class="title">Top Fundraisers</h1>
+                     <p>Support these causes</p>
+                     <br>
+                  </div>
+               </div>
+               <!-- /section title -->
+               <!-- blog -->
+               {% for campaign in most_liked %}
+               <div class="col-sm-4">
+                  <div class="article">
+                     <div>
+                        <img src="{{ campaign.image.url }}" class="img-responsive">
+                     </div>
+                     <br>
+                     <div class="article-content">
+                        <h3><a href="{% url 'startFundraiser:campaign_detail' campaign.id %}" id="class2">
+                           {{ campaign.campaign_Title }}</a>
+                        </h3>
+                        <br>
+                        <ul class="article-meta" type="none">
+                           <li>By {{ campaign.user }}</li>
+                           <li>{{ campaign.comment_set.count }} Comments</li>
+                        </ul>
+                        <p>{{ campaign.campaign_Tagline }}</p>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+               <!-- /blog -->
+               <!-- /blog -->
+            </div>
+            <!-- /row -->
+         </div>
+         <!-- /container -->
+      </section>
+      {% endif %}
+      <!-- /BLOG -->
+      <!---->
+      {% endblock %}
+      <!--Footer-->
+      <section class="footer-sec">
+         <footer class="footer">
+            <div class="wrapper">
+               <ul class="list-inline">
+                  <li><a href="{% url 'startFundraiser:home' %}">Home</a></li>
+                  <li><a href="{% url 'startFundraiser:campaigns' %}">Projects</a></li>
+                  <li><a href="{% url 'marketplace:products_blog' %}">Marketplace</a></li>
+                  <li><a href="{% url 'polls:query_view' %}">Contact Us</a></li>
+               </ul>
+               <br>
+               <p>
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | </i> by iceBreaker
+               </p>
+            </div>
+         </footer>
+      </section>
+      <!-- scripts -->
+      <script src="{% static 'startFundraiser/js/jquery.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="{% static 'startFundraiser/js/script.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+      <script type="text/javascript">
+         $(".num").counterUp({delay:10,time:1000});
+      </script>
+      <script type="text/javascript">
+         $(document).ready(function(event){
+           $(document).on('click','#like',function(event){
+             event.preventDefault();
+             var id = {{ campaign1.id }};
+             $.ajax({
+               type: 'POST',
+               url: '{% url "startFundraiser:like_camp" %}',
+               data: {'id':id, 'csrfmiddlewaretoken':'{{ csrf_token }}'},
+               dataType: 'json',
+               success: function(response){
+                 $('#like-section').html(response['form'])
+                 console.log($('#like-section').html(response['form']));
+               },
+               error: function(rs, e){
+                 console.log(rs.responseText);
+               },
+             });
+           });
+         });
+      </script>
+   </body>
+</html>

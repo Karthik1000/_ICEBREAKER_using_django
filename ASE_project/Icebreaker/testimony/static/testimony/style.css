@@ -1,0 +1,33 @@
+table {
+    font-family:"Times New Roman", Times, serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th{
+  background-color: black;
+  color:white;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+html {
+  position:relative;
+  min-height:100%;
+}
+body {
+  font-family:"Times New Roman", Times, serif;
+
+}
+a:hover {
+    color: #F933FF;
+}
+.navbar-brand {
+  font-family: 'Sacramento', cursive;
+}

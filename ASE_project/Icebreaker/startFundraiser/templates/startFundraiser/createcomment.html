@@ -1,0 +1,53 @@
+{% extends 'startFundraiser/home.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block bg_img %}
+<section class="sec1">
+    <img src="{% static 'startFundraiser/images/bg_2.jpg' %}">
+</section>
+{% endblock %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Add a comment!</h2>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'startFundraiser/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Post your opinion here</h3>
+                    <p></p>
+                    <h3></h3>
+                    <p></p>
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

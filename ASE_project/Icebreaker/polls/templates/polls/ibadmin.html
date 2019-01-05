@@ -1,0 +1,22 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <link rel="stylesheet" type="text/css"href="{% static 'polls/adminlogin.css' %}">
+</head>
+<body>
+    <div class="loginbox">
+
+        <h1>ADMIN LOGIN</h1>
+        <form action="{% url 'polls:adminpage' %}" method="POST">
+            {% csrf_token %}
+           {{ form|crispy }}
+            <input type="submit" name="submit" value="LOGIN">
+
+        </form>
+    </div>
+</body>
+</html>

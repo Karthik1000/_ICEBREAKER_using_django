@@ -1,0 +1,46 @@
+{% extends 'startFundraiser/home.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block bg_img %}
+<section class="sec1">
+    <img src="{% static 'startFundraiser/images/bg_2.jpg' %}">
+</section>
+{% endblock %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Support the campaign!</h2><br>
+                    <form method="POST"  action="{% url 'startFundraiser:checkout' pk %}" class="post-form">{% csrf_token %}
+                    <b>  Backer:</b>&nbsp&nbsp <input type="text" name="backer" value="{{ request.user }}" ><br><br>
+                    <b>  Amount:</b> <input type="number" name="pay" ><br><br>
+                        <button style="background-color:green"type="submit" class="save btn btn-default">PAY</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Your contribution is deeply appreciated</h3>
+                    <p>We thank-you</p>
+                    <h3></h3>
+                    <p></p>
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

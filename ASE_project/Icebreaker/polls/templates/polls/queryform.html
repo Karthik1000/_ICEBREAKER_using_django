@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/form.css' %}">
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+
+
+  <div id="content">
+    <h1> CONTACT</h1>
+
+    <form id="query_form" action="" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="name" class="icon-user"> Name</label>
+            <span class="required">*</span>
+            <input type="text" name="name" id="name" required="required" placeholder="Your Name" />
+        </p>
+        <p>
+            <label for="email" class="icon-envelope"> Email</label>
+            <span class="required">*</span>
+            <input type="text" name="email" id="email" required="required" placeholder="I promise I hate spam too!" />
+        </p>
+        <p>
+            <label for="question_text" class="icon-comment"> Question</label>
+            <span class="required">*</span>
+            <input type="text" name="question_text" id="question_text" required="required" placeholder="Your message here and I'll answer as soon as possible" />
+        </p>
+        <input type="submit" value=" Send " />
+    </form>
+  </div>
+
+
+</html>

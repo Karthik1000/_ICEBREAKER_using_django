@@ -1,0 +1,88 @@
+{% load static from staticfiles %}
+<html>
+<head>
+  <title>blog</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+
+      nav ul li a{
+        color: yellow;
+      }
+
+      body{
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      main{
+        flex: 1 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--navbar-->
+    <header>
+  <div class="navbar-fixed">
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a style="color:blue" href="{% url 'register:user_logout' %}">Logout</a></li>
+    </ul>
+    <nav class="black">
+      <div class="nav-wrapper">
+        <a   href="{% url 'startFundraiser:home' %}" class="brand-logo blue-text">IceBreaker</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'marketplace:products_blog' %}">blog</a></li>
+          <li><a href="{% url 'marketplace:add_product' %}">Add Products</a></li>
+          <li><a href="{% url 'marketplace:my_products' %}">My Product</a></li>
+          <!-- <li><a href="/marketplace/add_tocart/"+str(id)><i class="fas fa-cart-plus"></i></a></li> -->
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Hi {{request.user}}<i class="material-icons right">arrow_drop_down</i></a></li>
+
+          <script type="text/javascript">
+            $(".dropdown-trigger").dropdown();
+          });
+          $(window).on('scroll', function() {
+                         if($(window).scrollTop()){
+                             $('nav').addClass('black');
+                         }
+                         else{
+                             $('nav').removeClass('black');
+                         }
+                     });
+          });
+        </script>
+
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+    {% block content%}
+      <main>
+      </main>
+    {% endblock %}
+
+    <!--footer-->
+    <footer class="page-footer grey lighten-1">
+        <div class="container">
+            <div class="row center">
+              <div class="col l12 s12">
+                <a href="#" class="black-text">Home</a>
+                <a href="{% url 'messenger' %}" class="black-text">facebook</a>
+              </div>
+            </div>
+            <div class="row center">
+              <div class="col l12 s12 blue-text">
+                <h6>Copyright ©2018 All rights reserved | by iceBreaker</h6>
+              </div>
+            </div>
+          </div>
+        </footer>
+  </body>
+</html>

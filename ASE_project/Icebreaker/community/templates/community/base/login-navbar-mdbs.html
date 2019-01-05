@@ -1,0 +1,208 @@
+{% load static %}
+    <html>
+        <head>
+            <title>{% block title %}
+            {% endblock %}
+            </title>
+            <!-- Font Awesome -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <!-- Bootstrap core CSS -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+            <!-- Material Design Bootstrap -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/css/mdb.min.css" rel="stylesheet">
+
+
+            <!-- JQuery -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <!-- Bootstrap tooltips -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+            <!-- Bootstrap core JavaScript -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+            <!-- MDB core JavaScript -->
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.15/js/mdb.min.js"></script>
+
+        </head>
+
+        <body>
+
+            <header>
+               <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top elegant-color">
+
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand" href="{% url 'startFundraiser:home' %}">iceBreaker</a>
+
+                    <!-- Collapse button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+                      <!-- Links -->
+                      <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'startFundraiser:home' %}">Fundraiser</a>
+                        </li>
+
+                          <li class="nav-item">
+                          <a class="nav-link" href="{% url 'marketplace:products_blog' %}">Marketplace</a>
+                        </li>
+
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Community</a>
+                          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'community:view_group' %}">view groups</a>
+                            <a class="dropdown-item" href="{% url 'community:my_group' %}">My profile</a>
+                            <a class="dropdown-item" href="{% url 'community:joined_group' %}">joined groups</a>
+                            <a class="dropdown-item" href="{% url 'community:make_group' %}">make groups</a>
+                            <a class="dropdown-item" href="{% url 'community:profile_list' %}">all profiles</a>
+
+
+                          </div>
+                        </li>
+
+                      </ul>
+                      <!-- Links -->
+
+                      <!--<form class="form-inline">-->
+                        <!--<div class="md-form my-0">-->
+                          <!--<input class="form-control mr-sm-2" type="text" id="filt" placeholder="Search" aria-label="Search" onkeyup="search()">-->
+                        <!--</div>-->
+                      <!--</form>-->
+                    </div>
+                    <!-- Collapsible content -->
+
+               </nav>
+            </header>
+
+            <main class="mt-10">
+
+                    {% block content %}
+                    {% endblock %}
+            </main>
+
+
+
+            <footer class="page-footer font-small mdb-color pt-4">
+
+                  <!-- Footer Links -->
+                  <div class="container text-center text-md-left">
+
+                    <!-- Footer links -->
+                    <div class="row text-center text-md-left mt-3 pb-3">
+
+                      <!-- Grid column -->
+                      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Icebreaker</h6>
+                        <p>Need a push to your community? Make it on your icebreaker community app.</p>
+
+                          <ul class="list-unstyled list-inline text-center py-2">
+                              {% if request.user.is_authenticated %}
+
+                            <li class="list-inline-item">
+                              <h5 class="mb-1">Register for free</h5>
+                            </li>
+                              {% else %}
+                            <li class="list-inline-item">
+                              <a href="{% url 'register:user_register' %}" class="btn btn-danger btn-rounded">Sign up!</a>
+                            </li>
+                              {% endif %}
+                          </ul>
+                      </div>
+                      <!-- Grid column -->
+
+                      <hr class="w-100 clearfix d-md-none">
+
+                      <!-- Grid column -->
+                      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                        <p>
+                          <a href="{% url 'community:my_group' %}">community</a>
+                        </p>
+                        <p>
+                          <a href="{% url 'startFundraiser:home' %}">fundraiser</a>
+                        </p>
+
+                        <p>
+                          <a href="{% url 'polls:query_view' %}">queries</a>
+                        </p>
+                      </div>
+                      <!-- Grid column -->
+
+                      <hr class="w-100 clearfix d-md-none">
+
+                      <!-- Grid column -->
+                      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+                        <p>
+                          <a href="{% url 'community:my_group' %}">Your Account</a>
+                        </p>
+
+                      </div>
+
+                      <!-- Grid column -->
+                      <hr class="w-100 clearfix d-md-none">
+
+                      <!-- Grid column -->
+                      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                        <p>
+                          <i class="fa fa-home mr-3"></i> Sri city, india</p>
+                        <p>
+                          <i class="fa fa-envelope mr-3"></i> info@gmail.com</p>
+                        <p>
+                          <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+                        <p>
+                          <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+                      </div>
+                      <!-- Grid column -->
+
+                    </div>
+                    <!-- Footer links -->
+
+                    <hr>
+
+                    <!-- Grid row -->
+                    <div class="row d-flex align-items-center">
+
+                      <!-- Grid column -->
+                      <div class="col-md-7 col-lg-8">
+
+                        <!--Copyright-->
+                        <p class="text-center text-md-left">© 2018 Copyright:
+                          <a href="https://mdbootstrap.com/education/bootstrap/">
+                            <strong> IceBreaker.com</strong>
+                          </a>
+                        </p>
+
+                      </div>
+                      <!-- Grid column -->
+
+                      <!-- Grid column -->
+                      <div class="col-md-5 col-lg-4 ml-lg-0">
+
+                        <!-- Social buttons -->
+
+
+                      </div>
+                      <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                  </div>
+                  <!-- Footer -->
+
+
+              </footer>
+
+
+              <!-- Footer -->
+        </body>
+
+    </html>

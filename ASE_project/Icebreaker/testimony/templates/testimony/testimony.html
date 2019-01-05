@@ -1,0 +1,42 @@
+{% extends 'testimony/base1.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+<body>
+  <center>
+  <img src="{% static 'testimony/images/giphy.gif' %}" style="width:1520px;height:400px">
+</center>
+<center>
+  <div >
+
+    <div class="container" >
+
+      <div class="row">
+        <div class="col-sm-9 col-md-9 col-lg-5 mx-auto">
+          <div class="card">
+
+            <div class="card-header" >
+
+              <h1>Testimonials</h1>
+            </div>
+            <form action="{% url 'testimony:testi' %}" method="post">
+                <center>
+                 <p> please fill the following details</p>
+			           {% csrf_token %}
+                 {%  for field in testimony_form %}
+
+                   {{ field | add_class:"form-control" | attr:"size:20" }}<br><br>
+                 {% endfor %}
+
+                 <input type="submit" value="save it" class="btn btn-outline-success" style="font-size: 24px;">
+                   </center>
+			      </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</center>
+
+</body>
+{% endblock %}

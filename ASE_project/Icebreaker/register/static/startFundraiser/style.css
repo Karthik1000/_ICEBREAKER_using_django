@@ -1,0 +1,243 @@
+{% load static %}
+/*
+    Default Theme
+
+body{
+    color: #0c5460;
+
+}
+h3 {
+    font-family: "Raleway";
+}
+*/
+
+/* Html, Body */
+html, body {
+    height: 100%;
+}
+body {
+    color: #0c5460;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+}
+p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+}
+section {
+    background-color: #e9ecef;
+    overflow: hidden;
+}
+/* Preloader */
+#preloader {
+    background-color: #f7f7f7 ;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999; /* specifies stack order */
+}
+
+#class1 {
+    font-family: 'Raleway', sans-serif;
+        color: #6c757d;
+}
+
+#class2 {
+    font-family: 'Raleway', sans-serif;
+    color: #d39e00;
+}
+
+#status {
+    background: url("images/preloader.gif") no-repeat;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -35px;
+    margin-left: -35px;
+
+}
+/* home */
+#home {
+    background: none;
+    height: 100%;
+}
+#home-bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    background: url("images/children.jpg") no-repeat;
+    background-size: cover;
+}
+#home-overlay {
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+#home-content {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+#home-content-inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+#home-heading h1 {
+    color: #6c757d;
+    font-size: 65px;
+    font-weight: 100;
+    margin: 0;
+    display: inline-block;
+}
+#home-heading h1 span {
+    color: #0c5460;
+    font-weight: 500;
+    margin: 8px 0 30px 0px;
+}
+
+/* Buttons */
+.btn-general {
+    font-family: 'sans-serif', Raleway;
+    border-radius: 30px;
+    font-size: 18px;
+    margin: 0 6px;
+    padding: 12px 46px 17px 46px;/*internal spacing */
+    -webkit-transition: all .4s;
+    transition: all .4s;
+}
+
+.btn-home {
+    color: #0c5460;
+    border: 1px solid #0c5460;
+}
+
+.btn-home:hover, .btn-home:focus {
+    color: #6c757d;
+    background-color: #d39e00;
+
+}
+
+/* Navigation */
+.navbar {
+    padding: 35px 0 20px 0;
+    }
+
+.navbar-brand{
+    color: #0c5460;
+    font-family: 'Raleway', sans-serif;
+}
+
+.navbar-brand:hover, .navbar-brand:focus {
+    color: #0c5460;
+    font-family: 'Raleway', sans-serif;
+}
+
+.site-nav-wrapper {
+    padding: 0 50px 0 50px;
+}
+
+ul.navbar-nav > li > a {
+    font-family: 'Raleway', sans-serif;
+    color: #d39e00;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+a, li {
+    color: #0c5460;
+    text-decoration: None;
+}
+
+#links{
+    display: inline-block;
+}
+
+ul.navbar-nav > li > a:hover,
+ul-navbar-nav > li > a:focus {
+    background: none;
+    color: #d39e00;
+}
+
+/* Side nav */
+/*
+.thumbnail img {
+    height:250px;
+    width:100%;
+}
+*/
+.thumbnail{
+    width : 100%;
+    height: 500px;
+    overflow: auto;
+}
+
+.thumbnail img{
+
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.update {
+    margin: 20px 0px 20px 20px;
+}
+.main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.row {
+    margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+    padding: 8px;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+}
+
+/* Clear floats after rows */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Content */
+.content {
+    background-color: white;
+    padding: 10px;
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+    .column {
+        width: 50%;
+    }
+}

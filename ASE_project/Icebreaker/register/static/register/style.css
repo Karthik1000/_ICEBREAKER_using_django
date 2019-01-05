@@ -1,0 +1,13 @@
+html {
+  position:relative;
+  min-height:100%;
+}
+body {
+  font-family:"Times New Roman", Times, serif;
+}
+a:hover {
+    color: #F933FF;
+}
+.navbar-brand {
+  font-family: 'Sacramento', cursive;
+}

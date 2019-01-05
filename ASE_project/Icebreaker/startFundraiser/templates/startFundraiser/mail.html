@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> django mail</title>
+    <link rel="stylesheet" href="mail.css" >
+  </head>
+  <body>
+    <div class="msg">
+      Congrats!!! <strong> {{reciver}} </strong> <br>
+       You have received a fund of <strong> Rs.{{amount}} </strong> to the project <strong>{{project}}</strong> by <strong>{{donar}}</strong>
+    </div>
+  </body>
+</html>

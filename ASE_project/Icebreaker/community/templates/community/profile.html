@@ -1,0 +1,77 @@
+{% extends 'community/base/login-navbar-mdbs.html' %}
+    {% block title %}all groups{% endblock %}
+    {% block content %}
+<div class="container">
+
+    <br><br>
+    <br><br>
+    <div class="jumbotron text-center">
+      <h1>Profile page</h1>
+    </div>
+
+
+
+    <div class="container">
+      <div class="row">
+
+
+
+
+        <div class="col-sm-6">
+          <h3>name</h3>
+          <p>{{ usr.username }}</p>
+        </div>
+
+        <div class="col-sm-6">
+          <h3>email</h3>
+          <p>{{ usr.email }}</p>
+        </div>
+
+
+
+      </div>
+    </div>
+    <div class="container">
+        <h3>all the groups</h3>
+        <center>
+            <div class="table-responsive">
+            <table border="1" class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>
+                        title
+                    </th>
+                    <th>
+                        members
+                    </th>
+                    <th>
+                        date
+                    </th>
+                    <th>
+                        address
+                    </th>
+
+                </tr>
+                {% for i in content %}
+                <tr>
+                    <td>
+                        <a href="{% url 'community:group_detail' i.id %}"> {{ i.title }}</a>
+                    </td>
+                    <td>
+                        {{ i.number }}
+                    </td>
+                    <td>
+                        {{ i.date }}
+                    </td>
+                    <td>
+                        {{ i.address }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+        </table>
+            </div>
+        </center>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'marketplace/test.html' %}
+{% load static from staticfiles %}
+{% block content %}
+<!--slider-->
+<main>
+<div class="slider">
+<ul class="slides">
+  <li>
+    <img src="{% static 'startFundraiser/img/banner01.jpg'%}" alt="asdf"> <!-- random image -->
+    <div class="caption center-align">
+      <h3>This is our big Tagline!</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </div>
+  </li>
+  <li>
+    <img src="{% static 'startFundraiser/img/banner01.jpg'%}"> <!-- random image -->
+    <div class="caption left-align">
+      <h3>Left Aligned Caption</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </div>
+  </li>
+  <li>
+    <img src="{% static 'startFundraiser/img/banner02.jpg'%}"> <!-- random image -->
+    <div class="caption right-align">
+      <h3>Right Aligned Caption</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </div>
+  </li>
+  <li>
+    <img src="{% static 'startFundraiser/img/banner03.jpg'%}"> <!-- random image -->
+    <div class="caption center-align">
+      <h3>This is our big Tagline!</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </div>
+  </li>
+</ul>
+</div>
+<!--products-->
+<h2>Products</h2>
+<hr>
+<div class="container">
+<div class="row">
+  {% for product in products %}
+  <div class="col s12 l4">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{product.image.url}}" style="width:100%; height:200px;">
+      </div>
+      <div class="card-content">
+        <span class="card-title"><a style="color:inherit;" href = "{% url 'marketplace:product_details' slug=product.pk %}"><h4>{{product.product_title}}</h4></a></span>
+
+      <hr>
+        <p><b>Type: </b>{{ product.product_type }}</p>
+        <p><b>{{product.snippept}}</b></p>
+        <p><b>Quantity:</b> {{product.quantity}}</p>
+        <p><b>Cost:</b> Rs.{{product.cost}}</p>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+<script>
+$(document).ready(function(){
+    $('.slider').slider({
+      interval: 1500,
+    });
+  });
+
+</script>
+</main>
+{% endblock %}

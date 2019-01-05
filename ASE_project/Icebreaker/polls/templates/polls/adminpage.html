@@ -1,0 +1,28 @@
+
+
+<h1 style="text-align: center;font-family: 'Comic Sans MS'">Click on the queries to answer </h1><br>
+
+
+
+    <html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+{% for temp in latest_question_list%}
+<div class="container">
+
+    <table class="table table-hover">
+
+         <tbody>
+          <tr>
+            <td ><a href="{% url 'polls:detail' temp.id %}" style="color: #026670">{{ temp.question_text }}</a></td>
+          </tr>
+         </tbody>
+    </table>
+</div>
+{% endfor %}

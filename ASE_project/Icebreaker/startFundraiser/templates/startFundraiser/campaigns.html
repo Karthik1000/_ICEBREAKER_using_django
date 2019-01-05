@@ -1,0 +1,91 @@
+
+
+{% extends 'startFundraiser/home.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block title %}Campaigns|iceBreaker{% endblock %}
+{% block bg_img %}
+<section class="sec1">
+   <img src="{% static 'startFundraiser/images/bg_2.jpg' %}">
+</section>
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block content %}
+<br><br><br><br><br><br>
+<!-- Side nav -->
+<div class="sidenav">
+  <a href="{% url 'startFundraiser:creative' %}">Creative</a>
+  <a href="{% url 'startFundraiser:social' %}">Social</a>
+  <a href="{% url 'startFundraiser:tech' %}">Tech</a>
+  <a href="{% url 'startFundraiser:campaigns' %}">All</a>
+  <a href="{% url 'startFundraiser:start_campaign' %}">Start Campaign</a>
+</div>
+<!--End sidenav-->
+{% for project in projects %}
+<div class="col-sm-4 col-lg-3 ml-4">
+   <div class="thumbnail">
+      <a href="{% url 'startFundraiser:campaign_detail' project.id %}">
+      <img  src="{{ project.image.url }}" alt="Card image cap" class="img-responsive">
+      </a>
+      <div class="caption">
+         <a href="{% url 'startFundraiser:campaign_detail' project.id %}">
+            <h3 class="card-title"><strong>{{ project.campaign_Title }}</strong></h3>
+         </a>
+         <p class="card-text">{{ project.campaign_Tagline }}</p>
+      </div>
+      <div class="caption">
+         <p class="card-title camp">{{ project.campaign_Category|upper }}</p>
+      </div>
+      <div class="caption">
+         <h3 class="card-title">&#8377;{{ project.goal }}</h3>
+      </div>
+      <div class="row">
+         <div class="caption col-sm-6">
+            <h3 class="card-title">{{ project.pledged|div:project.goal|mul:100|floatformat}}% funded</h3>
+         </div>
+         <div class="caption col-sm-6 ">
+            <h3 class="card-title">{{ project.pledged }} raised</h3>
+         </div>
+      </div>
+      <div class="progress">
+         {% with per=project.pledged|div:project.goal|mul:100|floatformat %}
+         <h4 class="progress-bar progress-bar-success" role="progressbar" style="width: {{ per }}%" aria-valuemin="0" aria-valuemax="100">{{ per }}% funded</h4>
+         {% endwith %}
+      </div>
+      <div class="caption">
+         <h4 class="card-title">{{ project.end_Date|sub:project.start_Date|truncatewords:1 }}days left</h4>
+      </div>
+      <div class="caption">
+         <p class="card-title camp_status">{{ project.campaign_status|capfirst }}</p>
+      </div>
+   </div>
+</div>
+{% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
+{% endfor %}
+{% endblock %}
+
+{% block custom_js %}
+<script>
+   $(document).ready(function() {
+       $('.col-lg-3').hover(
+           function() {
+               $(this).animate({
+               marginLeft:'+=0.1%',
+               },200);
+
+           },
+
+           function() {
+               $(this).animate({
+               marginLeft:'0%',
+               },200);
+
+           }
+       );
+
+   });
+
+</script>
+{% endblock %}
+

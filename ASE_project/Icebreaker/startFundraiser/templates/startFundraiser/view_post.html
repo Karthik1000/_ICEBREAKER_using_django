@@ -1,0 +1,39 @@
+{% extends 'startFundraiser/home.html' %}
+
+{% block internal_styles %}
+  <style>
+  .footer-sec {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  </style>
+{% endblock internal_styles%}
+
+{% block content %}
+<main>
+  <br><br><br><br><br><br><br><br><br>
+<div class="container">
+    {% if posts %}
+    <div class="row">
+    {% for post in posts %}
+      <div class="col-sm-4 ">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">{{ post.title}}</h1>
+          <p class="card-text">{{ post.description|safe}}</p>
+          <a href="{% url 'edit_post' id=post.pk %}" class="card-link">Edit</a>
+          <a href="{% url 'del_post'  id=post.pk %}" class="card-link">Delete</a>
+        </div>
+      </div>
+    </div>
+      {% endfor %}
+  </div>
+      {% else %}
+    <br><br><br><br><br><br><br><br><br>
+    <center><h1>No New Notifications</h1></center>
+    {% endif %}
+</div>
+</main>
+{% endblock %}

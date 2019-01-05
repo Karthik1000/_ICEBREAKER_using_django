@@ -1,0 +1,67 @@
+{% extends 'marketplace/test.html' %}
+{% block content %}
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+              integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+              crossorigin="anonymous">
+
+<table class="highlight responsive-table">
+        <thead>
+          <tr>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in order.get_cart_item %}
+          <tr>
+            <td>
+              {{ item.product.product_title }}
+              <form action="{% url 'marketplace:del_quantity' id=item.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit">
+                  <i class="fas fa-trash fa-sm"></i>
+                </button>
+              </form>
+            </td>
+
+            <td>
+              <form action="{% url 'marketplace:add_quantity' id=item.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit">
+                    <i class="fas fa-plus fa-sm"></i>
+                </button>
+              </form>
+              {{ item.qty }}
+              <form action="{% url 'marketplace:remove_quantity' id=item.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit">
+                  <i class="fas fa-minus fa-sm"></i>
+                </button>
+              </form>
+            </td>
+
+            <td>₹{{ item.cost }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="2">Total</td>
+            <td>₹{{ order.get_cart_total }}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><a href="{% url 'marketplace:products_blog' %}">Continue Shopping</a></td>
+            <td>
+              {% if order.get_cart_item %}
+                <a href="{% url 'marketplace:checkout' %}">Proceed To Checkout</a>
+              {% endif %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+{% endblock %}

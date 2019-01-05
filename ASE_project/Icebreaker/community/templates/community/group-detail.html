@@ -1,0 +1,139 @@
+
+{% extends 'community/base/login-navbar-mdbs.html' %}
+    {% block title %}group detail{% endblock %}
+    {% block content %}
+
+
+
+
+        <div class="container">
+           <br><br><br><br><br>
+           <div class="mt-5">
+              <div class="row bounce">
+                 <div class="col-md-8 mb-3">
+                    <div class="card card-cascade padding">
+                       <h4>title :  {{ group.title }}</h4>
+                        <h4>owner : <a href="{% url 'community:profile_detail' group.founder.id %}">{{ group.founder.username }}</a></h4>
+                       <h4>type :  {{ group.type }}</h4>
+                       <h4>address :  {{ group.address }}</h4>
+                       <h4>members :  {{ group.number }}</h4>
+                       <h4>date :  {{ group.date }}</h4>
+                        {% if request.user == group.founder %}
+                            <h4><a href="{% url 'community:group_edit' group.pk %}">edit</a></h4>
+                            <h4><a href="{% url 'community:update_detail' group.pk %}">update</a></h4>
+
+                        {% endif %}
+                    </div>
+                 </div>
+                 <div class="col-md-4 mb-3">
+                    <h3>temperature : {{ temp }} F</h3>
+                     <h3>weather : {{ description }}</h3>
+                     <figure>
+                         <img src="http://openweathermap.org/img/w/10d.png" alt="icon">
+                     </figure>
+
+                 </div>
+              </div>
+              <center>
+                 {% if request.user == group.founder %}
+                 {% else %}
+                    {% if message %}
+                    {{ message }}
+                    {% endif %}
+                 {% endif %}
+              </center>
+              <form method="POST">
+                 <center>
+                    {% csrf_token %}
+                    {% if request.user == group.founder %}
+                    {% else %}
+
+                    <div class="custom-control custom-radio">
+                       <div class="form-check form-check-inline">
+                          <input type="radio" class="form-check-input" value="yes" id="materialInline2" name="choice">
+                          <label class="form-check-label" for="materialInline2">yes</label>
+                       </div>
+                       <!-- Material inline 3 -->
+                       <div class="form-check form-check-inline">
+                          <input type="radio" class="form-check-input" id="materialInline3" value="no" name="choice">
+                          <label class="form-check-label" for="materialInline3">no</label>
+                       </div>
+                       <br>
+                       <button type="submit" class="btn btn-success">submit</button>
+                    </div>
+                    {% endif %}
+                 </center>
+                 <br>
+                 <center>
+                    <div id="map" class="z-depth-5" style="height: 45%;"></div>
+                 </center>
+                 <br>
+                 <center>
+                    <h3>comment</h3>
+                    <input type="textarea" name="comment" class="form-control" rows="5" maxlength="500"><br>
+                    <button type="submit" class="btn btn-success">submit</button><br><br>
+                 </center>
+              </form>
+               <div class="table-responsive">
+                 <center>
+                    <table border="1" class="table table-striped table-bordered table-hover">
+                       <tr>
+                          <th>updates
+                          </th>
+                       </tr>
+                       {% for i in updates %}
+                       <tr>
+                          <td>
+                             {{ i.update }}
+                          </td>
+                       </tr>
+                       {% endfor %}
+                    </table>
+                 </center>
+              </div>
+              <div class="table-responsive">
+                 <center>
+                    <table border="1" class="table table-striped table-bordered table-hover">
+                       <tr>
+                           <th>User
+                          </th>
+                          <th>Comments
+                          </th>
+                       </tr>
+                       {% for i in comments %}
+                       <tr>
+                           <td>
+                               <a href="{% url 'community:profile_detail' i.user.id %}">{{ i.user.username }}</a>
+                          </td>
+                          <td>
+                             {{ i.comment }}
+                          </td>
+                       </tr>
+                       {% endfor %}
+                    </table>
+                 </center>
+              </div>
+              <script>
+                 // Initialize and add the map
+                 function initMap() {
+                    // var la = document.getElementById('lat1').innerHTML;
+                    // var lo = document.getElementById('lon1').innerHTML;
+                    var la = {{ group.lat }};
+                    var lo = {{ group.lon }};
+
+
+                      var latlng = {lat: parseFloat(la), lng: parseFloat(lo)};
+                      var loc = {lat: parseFloat(la), lng: parseFloat(lo)};
+
+                   var map = new google.maps.Map(
+                       document.getElementById('map'), {zoom: 14, center: loc});
+                   // The marker, positioned at Uluru
+                   var marker = new google.maps.Marker({position: loc, map: map});
+                 }
+
+              </script>
+              <script async defer
+                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoxHIV4EUz3PsPOwB_ehuLLDu4OE0ELLc&callback=initMap"></script>
+           </div>
+        </div>
+    {% endblock %}

@@ -1,0 +1,118 @@
+            <!-- Header Meta Data -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#" id="#class1">ice<strong>Breaker</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'staticFundraiser:home'}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Marketplace</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'startFundraiser:campaigns' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Explore
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Creative</a>
+          <a class="dropdown-item" href="#">Social</a>
+          <a class="dropdown-item" href="#">Tech &amp; Innovation</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Communities</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" label="Search" id="#class1">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<!--Part2-->
+{% extends 'startFundraiser/base.html' %}
+{% block title %}Campaigns|iceBreaker{% endblock %}
+
+{% block content %}
+<!-- Side nav  -->
+<div class="wrapper">
+    <nav id="sidebar">
+        <div class="sidebar-header" style="font-size: 30px">Filter</div>
+
+    <p>Project Type</p>
+        <ul type="None">
+            <li><a href="{% url 'startFundraiser:campaigns' %}">All Campaigns</a></li>
+            <li><a href="{% url 'startFundraiser:campaigns' %}">Marketplace</a></li>
+            <li><a href="{% url 'startFundraiser:campaigns' %}">Communities</a></li>
+        </ul>
+
+    <p>Collections</p>
+        <ul type="None" style="margin-left: auto">
+            <li><a href="{% url 'startFundraiser:creative' %}">Creative</a></li>
+            <li><a href="{% url 'startFundraiser:social' %}">Social</a></li>
+            <li><a href="{% url 'startFundraiser:tech' %}">Tech &amp; Innovation</a></li>
+        </ul>
+
+
+    </nav>
+</div>
+<!-- Side nav -->
+<div class="wrapper">
+    <nav id="sidebar">
+        <div class="sidebar-header" style="font-size: 30px">Filter</div>
+
+    <p>Project Type</p>
+        <ul type="None">
+            <li><a href="{% url 'startFundraiser:campaigns' %}">All Campaigns</a></li>
+            <li><a href="{% url 'startFundraiser:campaigns' %}">Marketplace</a></li>
+            <li><a href="{% url 'startFundraiser:campaigns' %}">Communities</a></li>
+        </ul>
+
+    <p>Collections</p>
+        <ul type="None" style="margin-left: auto">
+            <li><a href="{% url 'startFundraiser:creative' %}">Creative</a></li>
+            <li><a href="{% url 'startFundraiser:social' %}">Social</a></li>
+            <li><a href="{% url 'startFundraiser:tech' %}">Tech &amp; Innovation</a></li>
+        </ul>
+
+
+    </nav>
+</div>
+
+<div class="container" style="left: 25%">
+{% for project in projects %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ project.image.url }}" alt="Card image cap">
+            <div class="card-body">
+                <a href="{% url 'startFundraiser:campaign_detail' project.id %}"><h5 class="card-title">{{ project.campaign_Title }}</h5></a>
+                <p class="card-text">{{ project.campaign_Tagline }}</p>
+            </div>
+    </div>
+{% endfor %}
+</div>
+
+
+    <div class="row">
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                        {% if campaign1.image %}
+                            <img src="{{ campaign1.image.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+
+                    <h1>{{ campaign1.campaign_Title }} <small>{{ campaign1.campaign_Tagline }}</small></h1>
+                    <h2>{{ campaign1.overview }}</h2>
+
+                </div>
+            </div>
+        </div>
+        </div>

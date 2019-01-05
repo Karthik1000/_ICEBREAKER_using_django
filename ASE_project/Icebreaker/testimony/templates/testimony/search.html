@@ -1,0 +1,25 @@
+{% extends 'testimony/base1.html' %}
+{% block content %}
+
+
+<h2>Testimony Table</h2>
+
+<table>
+  <tr>
+    <th>commented</th>
+    <th>to whom commented</th>
+    <th>comments</th>
+
+  </tr>
+  {% for field in all_profiles %}
+      <tr>
+        <td>{{ field.name }}</td>
+        <td>{{ field.to_name }}</td>
+        <td>{{ field.commented }}</td>
+
+      </tr>
+  {% endfor %}
+</table>
+
+
+{% endblock %}

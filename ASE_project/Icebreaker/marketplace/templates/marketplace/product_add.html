@@ -1,0 +1,162 @@
+{% extends "marketplace/test.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<main>
+<div class="container">
+  <div class="card hoverable">
+    <div class="card-body">
+        <!--<form class="" action="{% url 'marketplace:add_product' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form }}
+          <input type="submit"  value="Add Product">
+        </form>-->
+        <!-- <form method="post" action="{% url 'marketplace:add_product' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+            <span class="red-text">{{form.non_field_errors}}</span>
+          {% endif %}
+
+          <div class="form-group row">
+            <label for="{{form.product_title.id_for_label}}" class="col-sm-2 col-form-label">Product Name : -</label>
+            <div class="col">
+            {{form.product_title| add_class:"form-control"| append_attr:"placeholder:product Name"}}
+            {% if form.product_title.help_text %}
+              <span class="helper-text">{{form.product_title.help_text}}</span>
+            {% endif %}
+            {% if form.product_title.errors %}
+              <span class="helper-text red-text">{{form.product_title.errors}}</span>
+            {% endif %}
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="{{form.product_type.id_for_label}}" class="col-sm-2 col-form-label">Product Type : -</label>
+            <div class="col-sm-4">
+              {{form.product_type| add_class:"form-control"| append_attr:"placeholder:product type"}}
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="{{form.overview.id_for_label}}" class="col-sm-2 col-form-label">Overview : -</label>
+            <div class="col-sm-6">
+              {{form.overview| add_class:"form-control"| append_attr:"placeholder:Overview"}}
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="{{form.image.id_for_label}}" class="col-sm-2 col-form-label">Upload Image</label>
+            <div class="col-sm-10">
+              {{form.image}}
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="{{form.quantity.id_for_label}}" class="col-sm-2 col-form-label">Quantity : -</label>
+            <div class="col-sm-2">
+              {{form.quantity| add_class:"form-control"| append_attr:"placeholder:Quantity"}}
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="{{form.cost.id_for_label}}" class="col-sm-2 col-form-label">Cost : -</label>
+            <div class="col-sm-2">
+              {{form.cost| add_class:"form-control"| append_attr:"placeholder:Cost"}}
+            </div>
+          </div>
+          <center><button type="submit" class="btn btn-primary">Submit</button></center>
+        </form> -->
+        <div class="row">
+          <form class="col s10 offset-s1"  method="post" enctype="multipart/form-data">
+            <h4 class="center-align">{{heading}}</h4>
+            {% csrf_token %}
+            <div class="row">
+
+              <div class="input-field col s12">
+                {{form.product_title| add_class:"materialize-textarea"| attr:"id:product Name"}}
+                <label for="{{form.product_title.id_for_label}}">Product Name</label>
+                {% if form.product_title.help_text %}
+                  <span class="helper-text">{{form.product_title.help_text}}</span>
+                {% endif %}
+                {% if form.product_title.errors %}
+                  <span class="helper-text red-text">{{form.product_title.errors}}</span>
+                {% endif %}
+              </div>
+
+              <div class="input-field col s12">
+                {{form.product_type| add_class:"materialize-textarea"| attr:"id:product type"}}
+                <label for="{{form.product_type.id_for_label}}">Product type</label>
+                {% if form.product_type.help_text %}
+                  <span class="helper-text">{{form.product_type.help_text}}</span>
+                {% endif %}
+                {% if form.product_type.errors %}
+                  <span class="helper-text red-text">{{form.product_type.errors}}</span>
+                {% endif %}
+              </div>
+
+              <div class="input-field col s12">
+                {{form.overview| add_class:"materialize-textarea"| attr:"id:Cost"}}
+                <label for="{{form.overview.id_for_label}}">overview</label>
+                {% if form.overview.help_text %}
+                  <span class="helper-text">{{form.overview.help_text}}</span>
+                {% endif %}
+                {% if form.overview.errors %}
+                  <span class="helper-text red-text">{{form.overview.errors}}</span>
+                {% endif %}
+              </div>
+
+              <div class="input-field col s12">
+                {{form.description| add_class:"materialize-textarea"}}
+                <label for="{{form.description.id_for_label}}">description</label>
+                {% if form.description.help_text %}
+                  <span class="helper-text">{{form.description.help_text}}</span>
+                {% endif %}
+                {% if form.description.errors %}
+                  <span class="helper-text red-text">{{form.description.errors}}</span>
+                {% endif %}
+              </div>
+
+              <div class="file-field input-field col s7">
+                <div class="btn">
+                  <span>Image Upload</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  {{form.image}}
+                </div>
+              </div>
+
+              <div class="input-field col s6">
+                {{form.quantity| add_class:"materialize-textarea"| attr:"id:quantity"}}
+                <label for="{{form.quantity.id_for_label}}">quantity</label>
+                {% if form.quantity.help_text %}
+                  <span class="helper-text">{{form.quantity.help_text}}</span>
+                {% endif %}
+                {% if form.quantity.errors %}
+                  <span class="helper-text red-text">{{form.quantity.errors}}</span>
+                {% endif %}
+              </div>
+
+              <div class="input-field col s6">
+                {{form.cost| add_class:"materialize-textarea"| attr:"id:cost"}}
+                <label for="{{form.cost.id_for_label}}">Cost</label>
+                {% if form.cost.help_text %}
+                  <span class="helper-text">{{form.cost.help_text}}</span>
+                {% endif %}
+                {% if form.cost.errors %}
+                  <span class="helper-text red-text">{{form.cost.errors}}</span>
+                {% endif %}
+              </div>
+              <button type="submit" name="Submit" class="btn right">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+</main>
+{% endblock %}

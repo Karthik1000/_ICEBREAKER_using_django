@@ -1,0 +1,145 @@
+{% extends 'startFundraiser/home.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static 'register/js/profile.js' %}"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+  <title>profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<br><br><br><br><br><br><br><br><br>
+
+<div class="container bootstrap snippet">
+    <div class="row">
+      {% if user.is_authenticated %}
+  		<div class="col-sm-10"><h1><span> Hi {{ request.user|capfirst }} </span></h1></div>
+      {% endif%}
+    	<!--<div class="col-sm-2"><a href="/users" class="pull-right"><img title="Logo Icebreaker" class="img-circle img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Icebreaker_logo.svg"></a></div>-->
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+
+
+      <div class="text-center">
+        {% if user.is_authenticated %}
+          {% if request.user.profile.photo %}
+            <img src="{{ request.user.profile.photo.url }}" alt="" class="navbar-img" width="200px" height="200px" style="border-radius: 50%;" >
+            <h6 class="panel-heading">Profile Image</h6>
+          {% else %}
+            <img src="{% static 'register/images/user.png' %}" alt="" class="navbar-img" width="200px" height="200px" style="border-radius: 50%;">
+            <h6>Upload a different photo...</h6>
+          {% endif %}
+        {% endif%}
+
+
+
+
+
+      </div></hr><br>
+
+
+
+
+
+
+
+
+        </div><!--/col-3-->
+    	<div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
+                <li><a data-toggle="tab" href="#messages">Contributions</a></li>
+                <li><a data-toggle="tab" href="#settings">Campaigns</a></li>
+                <li><a data-toggle="tab" href="#password">Change Password</a></li>
+              </ul>
+
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                <form method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in user_form %}
+                        {{ field.label }}
+                        {{ field | add_class:"form-control" | attr:"size:30" }}<br><br>
+
+                    {% endfor %}
+                    {% for field1 in profile_form %}
+                        {{ field1.label }}
+                        {{ field1 | add_class:"form-control" | attr:"size:30" }}<br><br>
+
+                    {% endfor %}
+                    <input type="submit" value="Save changes" class="btn btn-outline-success">
+                </form>
+
+              <hr>
+
+             </div><!--/tab-pane-->
+             <div class="tab-pane" id="messages">
+
+               <h2>contributions</h2>
+
+               <table>
+                 <tr>
+
+                   <th>Backer</th>
+                   <th>amounts(in Rs)</th>
+
+                 </tr>
+
+               </table>
+
+               <hr>
+
+
+             </div><!--/tab-pane-->
+             <div class="tab-pane" id="settings">
+
+                <h2>campaigns</h2>
+
+                {% for project in projects %}
+
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <a href="{% url 'startFundraiser:campaign_detail' project.id %}"><h5 class="card-title">{{ project.campaign_Title }}</h5></a>
+                                <p class="card-text">{{ project.campaign_Tagline }}</p>
+                            </div>
+                            <div class="caption">
+                                <h5 class="card-title">&#8377;{{ project.goal }}</h5>
+                            </div>
+                        </div>
+
+                    <br><br>
+                {% endfor %}
+
+
+                <hr>
+
+              </div>
+              <div class="tab-pane" id="password"><!--/tab-pane--><br>
+                <a href="{% url 'register:change_password' %}">change password</a>
+              
+              </div>
+
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
