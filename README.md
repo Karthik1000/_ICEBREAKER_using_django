@@ -1,4 +1,6 @@
 # ASE_project-_ICEBREAKER
+<b> Use requirements1.txt instead of requirements.txt </b><br>
+
 Hi friends,<br>
   This project is about crowdfunding. As we all know about crowdfunding is the practice of funding a project or venture 
   by raising small amounts of money from a large number of people, typically via the Internet.In this project we used small
@@ -6,7 +8,8 @@ Hi friends,<br>
   of vast networks of people to bring investors and entrepreneurs together and has the potential to increase entrepreneurship by 
   expanding the pool of investors from people funds that can be raised beyond the traditional circle of owners, relatives and capitalists.
   
-  This project is done by a group of six members including me.Here in this project I was assigned to do registration,login,User profiles.
+  This project is done by a group of six members including me.<br>
+  Here in this project I was assigned to do registration,login,User profiles.
   Here I did registration using google and facebook and creating some testimonies.
   
   This project has development tools like:<br>
