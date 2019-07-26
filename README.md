@@ -24,7 +24,7 @@ Hi friends,<br>
       
       
   <b>  To run this project on your computer and live then follow the steps: --</b><br>
-  
+      <b>   
       1. First open command prompt or windows power shell or terminal. <br>
       2. Open this repository and go to \ASE1_project\ASE_project\Icebreaker. <br>
       3. Now type the command "pip install -r requirements1.txt" in your command prompt or powershell or terminal.<br>
@@ -32,5 +32,5 @@ Hi friends,<br>
       5. Then you will see http://127.0.0.1:8000/ something like this then click on this or paste this url in your browser. <br>
       6. Finally you will see this project and one more important point is that your screen should have good resolution so that you can 
          see this project in good way. <br> 
-  
+      </b>   
   <b> Thank you .</b>
