@@ -1,5 +1,5 @@
 # ASE_project-_ICEBREAKER
-## I have attached a worflow of project in pdf in this repo
+## This is a type of crowd funding project like Kickstarter, Indiegogo, Crowdfunder.
 <b> Use requirements1.txt instead of requirements.txt </b><br>
 <br>
 <b> Description of this project and my role </b> <br>
@@ -24,7 +24,7 @@ Hi friends,<br>
       7. Javascript <br>
       
  
-      
+   <b><u> I have attached a pdf file in this repo of my project workflow </u></b>   
       
   <b>  To run this project on your computer and live then follow the steps: --</b><br>
       <b>   
