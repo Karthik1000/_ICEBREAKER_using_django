@@ -23,8 +23,7 @@ Hi friends,<br>
       6. PHP  <br>
       7. Javascript <br>
       
-   <p style='color:red'>This is some red text.</p>
-   <b><u> I have attached a pdf file in this repo of my project workflow </u></b>   
+   ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) <b><u> I have attached a pdf file in this repo of my project workflow </u></b>   
       
   <b>  To run this project on your computer and live then follow the steps: --</b><br>
       <b>   
