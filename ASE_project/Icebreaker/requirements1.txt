@@ -33,7 +33,7 @@ django-mathfilters==0.4.0
 django-recaptcha==1.4.0
 django-timezone-field==3.0
 django-widget-tweaks==1.4.3
-djangorestframework==3.9.0
+djangorestframework==3.11.2
 entrypoints==0.2.3
 html5lib==1.0.1
 idna==2.7
