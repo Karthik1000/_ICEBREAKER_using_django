@@ -39,7 +39,7 @@ django-widget-tweaks==1.4.3
 hyperlink==18.0.0
 idna==2.7
 incremental==17.5.0
-mysql-connector-python==8.0.12
+mysql-connector-python==8.0.14
 oauthlib==2.1.0
 Pillow==5.3.0
 protobuf==3.6.1
