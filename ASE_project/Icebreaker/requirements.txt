@@ -42,7 +42,7 @@ incremental==17.5.0
 mysql-connector-python==8.0.12
 oauthlib==2.1.0
 Pillow==5.3.0
-protobuf==3.6.1
+protobuf==3.18.3
 pycparser==2.19
 PyHamcrest==1.9.0
 PyJWT==1.6.4
